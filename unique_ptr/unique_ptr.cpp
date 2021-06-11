@@ -70,4 +70,9 @@ int main()
     }};
 
     unique_ptr<FILE, int(*)(FILE*)> archivo{ fopen("prueba.txt", "r"), fclose2};
+
+    unique_ptr<char[]> cadena{new char[256]};
+    cadena[0] = 'h';
+    cadena[1] = 0;
+
 }
