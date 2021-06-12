@@ -93,11 +93,11 @@ namespace heubdpp
         }
 
         auto use_count() const noexcept { return _contenedor ? _contenedor->_ref : 0; }
-        auto unique() const noexcept { return _contenedor ? _contenedor->_ref > 0 : 0; }
+        auto unique() const noexcept { return use_count() == 1; }
+        auto operator()() { return unique(); }
         auto get() const noexcept  -> pointer { return _contenedor ? _contenedor->_ptr : nullptr; }
         auto operator->() { return _contenedor->_ptr; }
         auto operator*() -> element_type& { return *_contenedor->_ptr; }
-        auto operator()() { return unique(); }
     };
 }
 
