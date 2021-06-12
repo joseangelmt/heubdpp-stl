@@ -88,8 +88,8 @@ namespace heubdpp
             _contenedor->_ref--;
             if( _contenedor->_ref == 0) {
                 delete _contenedor;
-                _contenedor = nullptr;
             }
+            _contenedor = nullptr;
         }
 
         auto use_count() const noexcept { return _contenedor ? _contenedor->_ref : 0; }
