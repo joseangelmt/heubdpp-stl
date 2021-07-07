@@ -138,7 +138,7 @@ namespace heubdpp
         weak_ptr(nullptr_t) 
         {}
 
-        weak_ptr(shared_ptr<T> sp)
+        weak_ptr(shared_ptr<T> const& sp)
             : _contenedor{sp._contenedor}
         {
             if( _contenedor )
