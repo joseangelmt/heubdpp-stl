@@ -157,7 +157,7 @@ namespace heubdpp
             reset();
         }
 
-        auto operator=(weak_ptr const& wp)
+        auto operator=(weak_ptr const& wp) noexcept
         {
             reset();
             _contenedor = wp._contenedor;
@@ -165,12 +165,17 @@ namespace heubdpp
             return *this;
         }
 
-        auto operator=(shared_ptr<T> const& sp)
+        auto operator=(shared_ptr<T> const& sp) noexcept
         {
             reset();
             _contenedor = sp._contenedor;
             _contenedor->incrementaWeakRef();
             return *this;
+        }
+
+        auto operator=(nullptr_t) noexcept
+        {
+            reset();
         }
 
         auto reset() noexcept
